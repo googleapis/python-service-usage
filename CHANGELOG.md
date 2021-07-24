@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/googleapis/python-service-usage/compare/v0.2.1...v0.3.0) (2021-07-24)
+
+
+### Features
+
+* add Samples section to CONTRIBUTING.rst ([#20](https://www.github.com/googleapis/python-service-usage/issues/20)) ([394ed1a](https://www.github.com/googleapis/python-service-usage/commit/394ed1a75dcfa2c70f8bbac6aaea1150a6d90052))
+
+
+### Bug Fixes
+
+* enable self signed jwt for grpc ([#24](https://www.github.com/googleapis/python-service-usage/issues/24)) ([cb9bed0](https://www.github.com/googleapis/python-service-usage/commit/cb9bed079e5ab4316ae79d44c8cf4bee1b4c3ae7))
+
 ### [0.2.1](https://www.github.com/googleapis/python-service-usage/compare/v0.2.0...v0.2.1) (2021-07-21)
 
 
