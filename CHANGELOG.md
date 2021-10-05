@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.2](https://www.github.com/googleapis/python-service-usage/compare/v1.0.1...v1.0.2) (2021-10-05)
+
+
+### Bug Fixes
+
+* improper types in pagers generation ([b230f5f](https://www.github.com/googleapis/python-service-usage/commit/b230f5fd83f21b7ac86bb01dac85ce403d694228))
+
 ### [1.0.1](https://www.github.com/googleapis/python-service-usage/compare/v1.0.0...v1.0.1) (2021-09-24)
 
 
