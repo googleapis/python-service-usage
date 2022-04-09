@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -425,7 +425,7 @@ class ServiceUsageClient(metaclass=ServiceUsageClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import service_usage_v1
+                    from google.cloud import service_usage_v1
 
             def sample_enable_service():
                 # Create a client
@@ -522,7 +522,7 @@ class ServiceUsageClient(metaclass=ServiceUsageClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import service_usage_v1
+                    from google.cloud import service_usage_v1
 
             def sample_disable_service():
                 # Create a client
@@ -613,7 +613,7 @@ class ServiceUsageClient(metaclass=ServiceUsageClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import service_usage_v1
+                    from google.cloud import service_usage_v1
 
             def sample_get_service():
                 # Create a client
@@ -700,7 +700,7 @@ class ServiceUsageClient(metaclass=ServiceUsageClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import service_usage_v1
+                    from google.cloud import service_usage_v1
 
             def sample_list_services():
                 # Create a client
@@ -789,7 +789,7 @@ class ServiceUsageClient(metaclass=ServiceUsageClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import service_usage_v1
+                    from google.cloud import service_usage_v1
 
             def sample_batch_enable_services():
                 # Create a client
@@ -880,7 +880,7 @@ class ServiceUsageClient(metaclass=ServiceUsageClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import service_usage_v1
+                    from google.cloud import service_usage_v1
 
             def sample_batch_get_services():
                 # Create a client
