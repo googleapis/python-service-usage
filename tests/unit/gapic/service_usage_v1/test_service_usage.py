@@ -2017,7 +2017,6 @@ def test_service_usage_transport_auth_adc(transport_class):
     [
         transports.ServiceUsageGrpcTransport,
         transports.ServiceUsageGrpcAsyncIOTransport,
-        transports.ServiceUsageRestTransport,
     ],
 )
 def test_service_usage_transport_auth_gdch_credentials(transport_class):
