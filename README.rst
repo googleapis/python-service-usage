@@ -3,7 +3,7 @@ Python Client for Service Usage API
 
 |stable| |pypi| |versions|
 
-`Service Usage API`_: 
+`Service Usage API`_: is an infrastructure service of Google Cloud that lets you list and manage other APIs and services in your Cloud projects.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
