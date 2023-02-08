@@ -14,25 +14,27 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from google.api_core import operations_v1
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import (
+    gapic_v1,
+    operations_v1,
+    path_template,
+    rest_helpers,
+    rest_streaming,
+)
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -40,12 +42,12 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.service_usage_v1.types import resources
-from google.cloud.service_usage_v1.types import serviceusage
 from google.longrunning import operations_pb2  # type: ignore
 
-from .base import ServiceUsageTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from google.cloud.service_usage_v1.types import resources, serviceusage
 
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from .base import ServiceUsageTransport
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -122,7 +124,12 @@ class ServiceUsageRestInterceptor:
 
 
     """
-    def pre_batch_enable_services(self, request: serviceusage.BatchEnableServicesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[serviceusage.BatchEnableServicesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_batch_enable_services(
+        self,
+        request: serviceusage.BatchEnableServicesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[serviceusage.BatchEnableServicesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for batch_enable_services
 
         Override in a subclass to manipulate the request or metadata
@@ -130,7 +137,9 @@ class ServiceUsageRestInterceptor:
         """
         return request, metadata
 
-    def post_batch_enable_services(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_batch_enable_services(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for batch_enable_services
 
         Override in a subclass to manipulate the response
@@ -138,7 +147,12 @@ class ServiceUsageRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_batch_get_services(self, request: serviceusage.BatchGetServicesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[serviceusage.BatchGetServicesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_batch_get_services(
+        self,
+        request: serviceusage.BatchGetServicesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[serviceusage.BatchGetServicesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for batch_get_services
 
         Override in a subclass to manipulate the request or metadata
@@ -146,7 +160,9 @@ class ServiceUsageRestInterceptor:
         """
         return request, metadata
 
-    def post_batch_get_services(self, response: serviceusage.BatchGetServicesResponse) -> serviceusage.BatchGetServicesResponse:
+    def post_batch_get_services(
+        self, response: serviceusage.BatchGetServicesResponse
+    ) -> serviceusage.BatchGetServicesResponse:
         """Post-rpc interceptor for batch_get_services
 
         Override in a subclass to manipulate the response
@@ -154,7 +170,12 @@ class ServiceUsageRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_disable_service(self, request: serviceusage.DisableServiceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[serviceusage.DisableServiceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_disable_service(
+        self,
+        request: serviceusage.DisableServiceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[serviceusage.DisableServiceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for disable_service
 
         Override in a subclass to manipulate the request or metadata
@@ -162,7 +183,9 @@ class ServiceUsageRestInterceptor:
         """
         return request, metadata
 
-    def post_disable_service(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_disable_service(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for disable_service
 
         Override in a subclass to manipulate the response
@@ -170,7 +193,12 @@ class ServiceUsageRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_enable_service(self, request: serviceusage.EnableServiceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[serviceusage.EnableServiceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_enable_service(
+        self,
+        request: serviceusage.EnableServiceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[serviceusage.EnableServiceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for enable_service
 
         Override in a subclass to manipulate the request or metadata
@@ -178,7 +206,9 @@ class ServiceUsageRestInterceptor:
         """
         return request, metadata
 
-    def post_enable_service(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_enable_service(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for enable_service
 
         Override in a subclass to manipulate the response
@@ -186,7 +216,12 @@ class ServiceUsageRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_service(self, request: serviceusage.GetServiceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[serviceusage.GetServiceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_service(
+        self,
+        request: serviceusage.GetServiceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[serviceusage.GetServiceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_service
 
         Override in a subclass to manipulate the request or metadata
@@ -202,7 +237,12 @@ class ServiceUsageRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_services(self, request: serviceusage.ListServicesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[serviceusage.ListServicesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_services(
+        self,
+        request: serviceusage.ListServicesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[serviceusage.ListServicesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_services
 
         Override in a subclass to manipulate the request or metadata
@@ -210,7 +250,9 @@ class ServiceUsageRestInterceptor:
         """
         return request, metadata
 
-    def post_list_services(self, response: serviceusage.ListServicesResponse) -> serviceusage.ListServicesResponse:
+    def post_list_services(
+        self, response: serviceusage.ListServicesResponse
+    ) -> serviceusage.ListServicesResponse:
         """Post-rpc interceptor for list_services
 
         Override in a subclass to manipulate the response
@@ -245,20 +287,21 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'serviceusage.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[ServiceUsageRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "serviceusage.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[ServiceUsageRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -297,7 +340,9 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -308,10 +353,11 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         self._operations_client: Optional[operations_v1.AbstractOperationsClient] = None
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
@@ -327,18 +373,20 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
         """
         # Only create a new client if we do not already have one.
         if self._operations_client is None:
-            http_options: Dict[str, List[Dict[str, str]]] = {
-            }
+            http_options: Dict[str, List[Dict[str, str]]] = {}
 
             rest_transport = operations_v1.OperationsRestTransport(
-                    host=self._host,
-                    # use the credentials which are saved
-                    credentials=self._credentials,
-                    scopes=self._scopes,
-                    http_options=http_options,
-                    path_prefix="v1")
+                host=self._host,
+                # use the credentials which are saved
+                credentials=self._credentials,
+                scopes=self._scopes,
+                http_options=http_options,
+                path_prefix="v1",
+            )
 
-            self._operations_client = operations_v1.AbstractOperationsClient(transport=rest_transport)
+            self._operations_client = operations_v1.AbstractOperationsClient(
+                transport=rest_transport
+            )
 
         # Return the client from cache.
         return self._operations_client
@@ -347,12 +395,14 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
         def __hash__(self):
             return hash("BatchEnableServices")
 
-        def __call__(self,
-                request: serviceusage.BatchEnableServicesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: serviceusage.BatchEnableServicesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the batch enable services method over HTTP.
 
             Args:
@@ -372,45 +422,50 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=*/*}/services:batchEnable',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=*/*}/services:batchEnable",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_batch_enable_services(request, metadata)
+            request, metadata = self._interceptor.pre_batch_enable_services(
+                request, metadata
+            )
             pb_request = serviceusage.BatchEnableServicesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -427,12 +482,14 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
         def __hash__(self):
             return hash("BatchGetServices")
 
-        def __call__(self,
-                request: serviceusage.BatchGetServicesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> serviceusage.BatchGetServicesResponse:
+        def __call__(
+            self,
+            request: serviceusage.BatchGetServicesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> serviceusage.BatchGetServicesResponse:
             r"""Call the batch get services method over HTTP.
 
             Args:
@@ -449,36 +506,41 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
                     Response message for the ``BatchGetServices`` method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=*/*}/services:batchGet',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=*/*}/services:batchGet",
+                },
             ]
-            request, metadata = self._interceptor.pre_batch_get_services(request, metadata)
+            request, metadata = self._interceptor.pre_batch_get_services(
+                request, metadata
+            )
             pb_request = serviceusage.BatchGetServicesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -497,12 +559,14 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
         def __hash__(self):
             return hash("DisableService")
 
-        def __call__(self,
-                request: serviceusage.DisableServiceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: serviceusage.DisableServiceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the disable service method over HTTP.
 
             Args:
@@ -522,11 +586,12 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=*/*/services/*}:disable',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=*/*/services/*}:disable",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_disable_service(request, metadata)
             pb_request = serviceusage.DisableServiceRequest.pb(request)
@@ -535,32 +600,34 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -577,12 +644,14 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
         def __hash__(self):
             return hash("EnableService")
 
-        def __call__(self,
-                request: serviceusage.EnableServiceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: serviceusage.EnableServiceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the enable service method over HTTP.
 
             Args:
@@ -602,11 +671,12 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=*/*/services/*}:enable',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=*/*/services/*}:enable",
+                    "body": "*",
+                },
             ]
             request, metadata = self._interceptor.pre_enable_service(request, metadata)
             pb_request = serviceusage.EnableServiceRequest.pb(request)
@@ -615,32 +685,34 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -657,12 +729,14 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
         def __hash__(self):
             return hash("GetService")
 
-        def __call__(self,
-                request: serviceusage.GetServiceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> resources.Service:
+        def __call__(
+            self,
+            request: serviceusage.GetServiceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> resources.Service:
             r"""Call the get service method over HTTP.
 
             Args:
@@ -681,36 +755,39 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=*/*/services/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=*/*/services/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_service(request, metadata)
             pb_request = serviceusage.GetServiceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -729,12 +806,14 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
         def __hash__(self):
             return hash("ListServices")
 
-        def __call__(self,
-                request: serviceusage.ListServicesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> serviceusage.ListServicesResponse:
+        def __call__(
+            self,
+            request: serviceusage.ListServicesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> serviceusage.ListServicesResponse:
             r"""Call the list services method over HTTP.
 
             Args:
@@ -751,36 +830,39 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
                     Response message for the ``ListServices`` method.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=*/*}/services',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=*/*}/services",
+                },
             ]
             request, metadata = self._interceptor.pre_list_services(request, metadata)
             pb_request = serviceusage.ListServicesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -796,52 +878,56 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
             return resp
 
     @property
-    def batch_enable_services(self) -> Callable[
-            [serviceusage.BatchEnableServicesRequest],
-            operations_pb2.Operation]:
+    def batch_enable_services(
+        self,
+    ) -> Callable[[serviceusage.BatchEnableServicesRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._BatchEnableServices(self._session, self._host, self._interceptor) # type: ignore
+        return self._BatchEnableServices(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def batch_get_services(self) -> Callable[
-            [serviceusage.BatchGetServicesRequest],
-            serviceusage.BatchGetServicesResponse]:
+    def batch_get_services(
+        self,
+    ) -> Callable[
+        [serviceusage.BatchGetServicesRequest], serviceusage.BatchGetServicesResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._BatchGetServices(self._session, self._host, self._interceptor) # type: ignore
+        return self._BatchGetServices(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def disable_service(self) -> Callable[
-            [serviceusage.DisableServiceRequest],
-            operations_pb2.Operation]:
+    def disable_service(
+        self,
+    ) -> Callable[[serviceusage.DisableServiceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DisableService(self._session, self._host, self._interceptor) # type: ignore
+        return self._DisableService(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def enable_service(self) -> Callable[
-            [serviceusage.EnableServiceRequest],
-            operations_pb2.Operation]:
+    def enable_service(
+        self,
+    ) -> Callable[[serviceusage.EnableServiceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._EnableService(self._session, self._host, self._interceptor) # type: ignore
+        return self._EnableService(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_service(self) -> Callable[
-            [serviceusage.GetServiceRequest],
-            resources.Service]:
+    def get_service(
+        self,
+    ) -> Callable[[serviceusage.GetServiceRequest], resources.Service]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetService(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetService(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_services(self) -> Callable[
-            [serviceusage.ListServicesRequest],
-            serviceusage.ListServicesResponse]:
+    def list_services(
+        self,
+    ) -> Callable[
+        [serviceusage.ListServicesRequest], serviceusage.ListServicesResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListServices(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListServices(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -851,6 +937,4 @@ class ServiceUsageRestTransport(ServiceUsageTransport):
         self._session.close()
 
 
-__all__=(
-    'ServiceUsageRestTransport',
-)
+__all__ = ("ServiceUsageRestTransport",)
